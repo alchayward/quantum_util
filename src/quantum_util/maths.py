@@ -11,7 +11,7 @@ def complete_elliptic_pi(n, m):
     return quad(f, 0, pi / 2)[0]
 
 
-def dots(*args):
+def matm(*args):
     if len(args) < 2: return args
     out = dot(args[-2], args[-1])
     for m in reversed(args[:-2]): out = dot(m, out)
@@ -19,4 +19,4 @@ def dots(*args):
 
 def ct(m): return np.conj(m.T)
 
-
+def commutator(a, b): return dot(a, b) - dot(b, a)
