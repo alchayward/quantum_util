@@ -8,13 +8,16 @@ from quantum_util.operators import ParameterizedWavefunction
 def polarization(wf, d_phi=1.0e-10):
     """
         todo:
-            have a more sofisticated (adaptive) mesh
+            have a more sophisticated (adaptive) mesh
     """
     def bp(phi):
         return imag(log( wf(phi).overlap(wf(phi+d_phi))))/d_phi
     return quad(bp, 0, 2*pi)[0]
 
 # 2D topology
+
+def curvature_fukuie():
+    pass
 
 def berry_curvature(wf, phi_x, phi_y, d_phi=1.0e-10):
     return imag(log(dot(wf(phi), wf(phi+d_phi))))/d_phi
