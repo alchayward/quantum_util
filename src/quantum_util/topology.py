@@ -7,14 +7,19 @@ from quantum_util.operators import ParameterizedWavefunction
 
 def polarization(wf, d_phi=1.0e-10):
     """
-        todo:
-            have a more sofisticated (adaptive) mesh
+    Polarization from Resta formula.
     """
-    def bp(phi):
-        return imag(log( wf(phi).overlap(wf(phi+d_phi))))/d_phi
-    return quad(bp, 0, 2*pi)[0]
-
+    L = states.shape[0]
+    X = diag(exp(-1.0j*linspace(0,2*pi,L)))
+    return -imag(log(det(conj(states.T) @ X @ states)))
+    
+def integrated_current():
+    pass
+        
 # 2D topology
+
+def curvature_fukuie():
+    pass
 
 def berry_curvature(wf, phi_x, phi_y, d_phi=1.0e-10):
     return imag(log(dot(wf(phi), wf(phi+d_phi))))/d_phi
