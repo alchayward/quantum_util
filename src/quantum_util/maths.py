@@ -1,5 +1,5 @@
 from scipy.integrate import quad
-from scipy import sin, pi
+from scipy import sin, pi, dot
 import numpy as np
 
 def quadrant(x, y):
